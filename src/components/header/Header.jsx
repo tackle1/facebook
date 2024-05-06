@@ -11,6 +11,34 @@ import { Avatar } from "@mui/material";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 const Header = () => {
+  const listIcon = [
+    {
+      id: 1,
+      item: HomeIcon,
+      class: "homeicon",
+    },
+    {
+      id: 2,
+      item: OndemandVideoIcon,
+      class: "videoicon",
+    },
+    {
+      id: 3,
+      item: StorefrontIcon,
+      class: "storeicon",
+    },
+    {
+      id: 4,
+      item: GroupIcon,
+      class: "groupicon",
+    },
+    {
+      id: 5,
+      item: ExtensionIcon,
+      class: "extendsionicon",
+    },
+  ];
+  
   return (
     <>
       <div className="header-container">
@@ -28,24 +56,18 @@ const Header = () => {
           </div>
         </div>
         <div className="header-icon">
+
           <ul>
-            <li>
-              <HomeIcon />
-            </li>
-            <li>
-              <OndemandVideoIcon />
-            </li>
-            <li>
-              <StorefrontIcon />
-            </li>
-            <li>
-              <GroupIcon />
-            </li>
-            <li>
-              <ExtensionIcon />
-            </li>
+            {
+              listIcon.map((icon) => (
+                <li key={icon.id} className={`list ${icon.class}`}>
+                  <icon.item />
+                </li>
+                ))}
           </ul>
+
         </div>
+
         <div className="header-alert">
           <div className="header-alert_profile">
             <Avatar
