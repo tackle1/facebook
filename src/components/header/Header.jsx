@@ -10,7 +10,9 @@ import ExtensionIcon from "@mui/icons-material/Extension";
 import { Avatar } from "@mui/material";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+
 const Header = () => {
+
   const listIcon = [
     {
       id: 1,
@@ -38,7 +40,7 @@ const Header = () => {
       class: "extendsionicon",
     },
   ];
-  
+
   return (
     <>
       <div className="header-container">
@@ -63,7 +65,7 @@ const Header = () => {
                 <li key={icon.id} className={`list ${icon.class}`}>
                   <icon.item />
                 </li>
-                ))}
+              ))}
           </ul>
 
         </div>
@@ -86,11 +88,14 @@ const Header = () => {
               <NotificationsIcon />
               <span className="number_alert">3</span>
             </div>
+
           </div>
         </div>
       </div>
+
     </>
   );
 };
 
 export default Header;
+
