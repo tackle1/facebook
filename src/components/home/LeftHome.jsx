@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -27,19 +27,43 @@ const listItem = [
         icon: AccessTimeIcon,
         text: "Memories",
     },
+
+    {
+        id: 5,
+        icon: AccessTimeIcon,
+        text: "ABC",
+    },
+    {
+        id: 6,
+        icon: AccessTimeIcon,
+        text: "XYZ",
+    },
 ];
 const LeftHome = () => {
+    const initNumberList = 4;
+    const [dataList, setDataList] = React.useState([]);
+    const [dataPages, setDataPages] = React.useState(likePages);
+    const [numberList, setnumberList] = React.useState(initNumberList);
+    const [numberPages, setnumberPages] = React.useState(initNumberList);
+    React.useEffect(() => {
+        setDataList(listItem.slice(0, numberList));
+        setDataPages(likePages.slice(0, numberPages));
+    }, [numberList, numberPages]);
     const handleShow = () => {
-        alert("hello");
+        setnumberList(listItem.length);
+    };
+
+    const handleHide = () => {
+        setnumberList(initNumberList);
     };
     const handleShowPage = () => {
-        alert("page");
+
     };
     return (
         <div className="lefthome-container">
             <div className="topleft">
                 <ul>
-                    {listItem.map((item) => (
+                    {dataList.map((item) => (
                         <li key={item.id}>
                             <div className="icon">
                                 <item.icon />
@@ -48,8 +72,16 @@ const LeftHome = () => {
                         </li>
                     ))}
                 </ul>
-                <button className="btn-see-more" onClick={handleShow}>
-                    <span className="text">See more</span>
+                <button className="btn-see-more" onClick={() => {
+                    {
+                        numberList === 4 && handleShow()
+                    }
+                    {
+                        numberList === 6 && handleHide()
+                    }
+                }}
+                >
+                    <span className="text">{numberList === 4 ? "See more" : "Hide"}</span>
                     <span className="icon">
                         <KeyboardArrowDownIcon />
                     </span>
@@ -64,18 +96,29 @@ const LeftHome = () => {
                 </div>
                 <div className="list-page">
                     <ul>
-                        {likePages.map((page) => (
+                        {dataPages.map((page) => (
                             <li>
                                 <img src={page.image} className="image" />
                                 <span className="text">{page.pageName}</span>
                             </li>
                         ))}
                     </ul>
-                    <button className="btn-see-more" onClick={handleShowPage}>
-                        <span className="text">See more</span>
-                        <span className="icon">
-                            <KeyboardArrowDownIcon />
-                        </span>
+                    <button className="btn-see-more" onClick={() => {
+                        {
+                            numberPages === initNumberList &&
+                                setnumberPages(likePages.length);
+                        }
+                        {
+                            numberPages === likePages.length &&
+                                setnumberPages(initNumberList);
+                        }
+                    }}
+                    >
+                        <span className="text">
+                            {numberPages === initNumberList ? "See more" : "Hide"}</span>
+
+                        <KeyboardArrowDownIcon />
+
                     </button>
                 </div>
             </div>
