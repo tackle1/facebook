@@ -5,7 +5,6 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
-import likePages from "../../data/LikePages.json";
 const listItem = [
     {
         id: 1,
@@ -39,7 +38,7 @@ const listItem = [
         text: "XYZ",
     },
 ];
-const LeftHome = () => {
+const LeftHome = ({ likePages }) => {
     const initNumberList = 4;
     const [dataList, setDataList] = React.useState([]);
     const [dataPages, setDataPages] = React.useState(likePages);
