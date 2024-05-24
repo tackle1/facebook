@@ -1,12 +1,9 @@
-import axios from "axios";
-
+import { Api } from "../utils/Api";
+const API = Api();
 export const getUser = () => {
-    const API = axios.create({
-        baseURL: "https://664b524535bbda10987c739f.mockapi.io"
+    return API.get("/users"); //gọi api để lấy data
+};
 
-    });
-    return API.get("/api/v1/users");
-}
-
-export const createUser = () => { };
-export const deleteUser = () => { };
+export const createUserRequest = (data) => {
+    return API.post("/api/v1/users", data);
+};

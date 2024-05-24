@@ -1,26 +1,29 @@
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import Header from "./components/header/Header.jsx"
-import News from "./pages/News.jsx"
-import About from "./pages/About.jsx"
-import Contact from "./pages/Contact.jsx"
-import Home from "./pages/home/Home.jsx"
+import "./App.css";
+import Home from "./pages/home/Home";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/header/Header";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getUser } from "./redux/actions/userAction";
+import Register from "./components/formlogin/Register";
 function App() {
-
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUser());
+  }, []); //{type, payload}
   return (
     <>
-
       <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/news' element={<News />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/about' element={<About />} />
-      </Routes>
+      <Register />
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user-profile/*" element={<Profile />} />
+        <Route path="/:nickname" element={<FriendProfile />} />
+      </Routes> */}
     </>
-  )
+  );
 }
 
+export default App;
 
-export default App
+

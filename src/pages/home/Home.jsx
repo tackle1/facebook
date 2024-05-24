@@ -5,19 +5,21 @@ import NewsFeed from "../../components/home/newsfeed/NewsFeed";
 import RightHome from "../../components/home/RightHome";
 import likePages from "../../data/LikePages";
 import { getUser } from "../../apis/userRequest";
-import { useDispatch } from "react-redux";
-import { getDataUser } from "../../redux/actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
 const Home = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getDataUser());
-  }, []);
+  const data = useSelector((state) => state.userReducer);
+  console.log("component Home", data);
+
   return (
-    <div className="home-container">
-      <LeftHome likePages={likePages} />
-      <NewsFeed />
-      <RightHome />
-    </div>
+    <>
+      <button onClick={handleCreateUser}>Create User</button>
+      <Header />
+      <div className="home-content">
+        <LeftHome />
+        <NewsFeed />
+        <RightHome />
+      </div>
+    </>
   );
 };
 
