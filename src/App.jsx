@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUser } from "./redux/actions/userAction";
 import Register from "./components/formlogin/Register";
+import Table from "./components/table/Table";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
     <>
       <Header />
       <Register />
+      {/* <Table /> */}
       {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/user-profile/*" element={<Profile />} />

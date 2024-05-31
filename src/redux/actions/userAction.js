@@ -17,4 +17,18 @@ export const createUser = (data) => async (dispatch) => {
     } catch (error) {
         dispatch({ type: "USER_FAIL" }); //error
     }
+
+
+};
+
+export const deleteUser = (id) => async (dispatch) => {
+    dispatch({ type: "USER_START" }); //load api
+    try {
+        await UserApi.deleteUser(id);
+        dispatch({ type: "USER_DELETE_SUCCESS", payload: id });
+    } catch (error) {
+        dispatch({ type: "USER_FAIL" }); //error
+    }
+
+
 };

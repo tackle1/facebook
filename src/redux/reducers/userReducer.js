@@ -8,6 +8,9 @@ export const userReducer = (
             return { ...state, loading: true }; //load api sửa thằng loading
         case "USER_SUCCESS":
             return { ...state, userData: payload, loading: false };
+        case "USER_DELETE_SUCCESS":
+            const newUsers = state.userData.filter((user) => user.userID !== payload);
+            return { ...state, userData: newUsers, loading: false }
         case "USER_FAIL":
             return { ...state, loading: false, error: true };
         default:

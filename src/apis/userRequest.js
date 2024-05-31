@@ -5,5 +5,9 @@ export const getUser = () => {
 };
 
 export const createUserRequest = (data) => {
-    return API.post("/api/v1/users", data);
+    return API.post("/users", data);
 };
+
+export const deleteUser = (id) => {
+    return API.delete(`/users/${id}`);
+}
